@@ -3,6 +3,7 @@ public class Character {
         String nome;
         int vida = 2;
         int municoes = 6;
+        int folego = 3;
 
         //construtores
         Character(){
@@ -22,5 +23,9 @@ public class Character {
             else{
                 System.out.println(alvo.nome + " levou um tiro");
             }
+        }
+        void agir(){
+            folego --;
+            System.out.println("detetive " +this.nome+ " perdeu -1 de folego, agora restam " +this.folego);
         }
 }

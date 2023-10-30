@@ -40,12 +40,13 @@ public class App {
             System.out.println(end1);
         }
         else {
+            jogador.agir();
             endcap = escolher(sc,cap2,op3,op4);
             if (endcap == 1){
                 System.out.println("'nao tenho tempo! se eu atirar no meu suspeito agora nao "
                 +"poderei interroga-lo depois, tenho que salva-lo!'...");
                 jogador.atirar(suspeito2);
-                suspeito2.atirar(suspeito1);
+                suspeito1.atirar(suspeito2);
                 
                 String end2 = "'apos conversar com " + suspeito1.nome
                 +" depois de salva-lo, conclui sua inocencia, pois o homem que atirei "
