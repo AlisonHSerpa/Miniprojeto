@@ -18,14 +18,17 @@ public class Character {
             alvo.vida -=1;
 
             if (alvo.vida == 0){
-                System.out.println(alvo.nome + " foi eliminado...");
+                System.out.println(this.nome + " atirou em " + alvo.nome+ ", "
+                +alvo.nome + " perdeu 1 de vida e foi eliminado...");
             }
             else{
-                System.out.println(alvo.nome + " levou um tiro");
+                System.out.println(this.nome + " atirou em " + alvo.nome+ ", "
+                +alvo.nome + " perdeu 1 de vida");
             }
         }
-        void agir(){
-            folego --;
-            System.out.println("detetive " +this.nome+ " perdeu -1 de folego, agora restam " +this.folego);
+        void agir(int penalidade){
+            folego -= penalidade;
+
+            System.out.println("detetive " +this.nome+ " perdeu -" +penalidade+ " de folego, agora restam " +this.folego);
         }
-}
+    }
