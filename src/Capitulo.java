@@ -3,45 +3,41 @@ public class Capitulo {
     Character protag;
     String nome;
     String texto;
-    String[] escolhas;
+    Escolha[] escolhas;
     int penalidade;
 
-    Scanner sc = new Scanner(System.in);
-
     //construtor de capitulos
-    Capitulo(Character protag, String nome, String texto, String[] escolhas, int penalidade) {
+    Capitulo(Character protag, String nome, String texto, int penalidade) {
         this.protag = protag;
         this.nome = nome;
         this.texto = texto;
-        this.escolhas = escolhas;
-        this.penalidade = penalidade;
-    }
-    //construtor de finais
-    Capitulo(Character protag, String nome, String texto, int penalidade){
-        this.protag= protag;
-        this.nome = nome;
-        this.texto = texto;
         this.penalidade = penalidade;
     }
 
-    public void anunciar (){
-        this.protag.agir(this.penalidade);
-        System.out.println("------" +this.nome+ "------");
-        System.out.println(this.texto);
+    public void executar(Capitulo capitulo, Scanner sc) {
+        mostrar(capitulo);
+
+        if (capitulo.escolhas != null){
+            executar(escolher(sc), sc);
+        }
     }
 
-    public int escolher (){
-            anunciar ();
+    public void mostrar (Capitulo capitulo){
+        capitulo.protag.agir(capitulo.penalidade);
+        System.out.println("------" +capitulo.nome+ "------");
+        System.out.println(capitulo.texto);
+    }
+
+    public Capitulo escolher (Scanner sc){
             while(true){
                 for(int i=0 ; i<this.escolhas.length ;i++){
-                System.out.println(this.escolhas[i]);
+                System.out.println(this.escolhas[i].escolha);
                 }
-
-                String escolhafinal = this.sc.nextLine();
+                String escolhafinal = sc.nextLine();
 
                 for (int i=0 ; i<this.escolhas.length ; i++){
-                    if (escolhafinal.equals(this.escolhas[i])){
-                        return i;
+                    if (escolhafinal.equals(this.escolhas[i].escolha)){
+                        return this.escolhas[i].proximocapitulo;
                     }
                 }
                 System.out.println("voce digitou " +escolhafinal+ ", digite corretamente.");

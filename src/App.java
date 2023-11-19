@@ -4,17 +4,14 @@ public class App {
     public static void main(String[] args) {
         //personagens e objetos
         Scanner sc = new Scanner(System.in);
-        Character jogador = new Character();
-        Character suspeito1 = new Character ("primeiro suspeito");
-        Character suspeito2 = new Character("segundo suspeito");
+        Character jogador = new Character(sc);
         
         //capituo 1
         String cap1 ="'15 de Setembro, 20 horas, um dia chuvoso, como os meus costumam sempre ser,"
         +"meu primeiro caso está quase no fim, persigo sorrateiramente meu suspeito, "
         +"estou armado so por segurança, ele acaba virando a esquerda na avenida Boulevard, "
         +"conheço esse beco, eh sem saida.'";
-        String[] escolhas = {"entrar junto", "entrar escondido"};
-        Capitulo capitulo1 = new Capitulo(jogador, "perseguir", cap1, escolhas, 0);
+        Capitulo raiz = new Capitulo(jogador, "perseguir", cap1, 0);
 
         //caítulo 2
         String cap2 = "'eu entro escondido, esperando alguns segundos encostado na parede, "
@@ -22,19 +19,18 @@ public class App {
         +"não consigo ouvir o que estão dizendo, apos agluns segundos,"
         +"vejo os dois sacarem suas armas um contra o outro! preciso agir rapido! "
         +"o que preciso fazer?'";
-        String[] escolhas2 = {"atirar no novo suspeito","atirar no meu suspeito"};
-        Capitulo capitulo2 = new Capitulo(jogador, "salve e condene", cap2, escolhas2, 1);
+        Capitulo capitulo2 = new Capitulo(jogador, "salve e condene", cap2, -1);
 
         //final 1
         String end1 = "'Este foi o ultimo registro escrito no caderno do detetive "
         +"falecido, que triste, estava tao confiante e morreu com 2 tiros no peito... "
         +"uma arma normal nao teria feito isso sozinha, pois tinham balas de calibres "
         +"diferentes, provavelmente havia outra pessoa nesse beco... mas quem?'.....fim..?";
-        Capitulo final1 = new Capitulo(jogador, "erro de principiante", end1, 3);
+        Capitulo final1 = new Capitulo(jogador, "erro de principiante", end1, -3);
 
         //final 2
         String end2 = "'apos conversar com meu primeiro suspeito"
-        +" depois de salva-lo, conclui sua inocencia, pois o homem que atirei "
+        +" depois de salva-lo, conclui sua inocencia, pois o homem em que atirei "
         +"tinha consigo provas de que estava chantageando meu suspeito para que ele "
         +"cometesse atos ilicitos, que bom que tomei a decisao certa, mais uma vez "
         +"a justica vence... mas...foi pura sorte...preciso melhorar como detetive'....fim.";
@@ -48,30 +44,17 @@ public class App {
         +"um simples afastamento de 1 semana... eu deveria perder meu distintivo... mas "
         +"o capitao me disse para nao perder a fe e melhorar como detetive, preciso "
         +"compensar com trabalho esse erro grotesco' registro final";
-        Capitulo final3 = new Capitulo(jogador, "eu estava errado" ,end3, 2);
+        Capitulo final3 = new Capitulo(jogador, "eu estava errado" ,end3, -2);
 
+        //atribuindo as escolhas
+        Escolha[] escolha01 = {new Escolha("entrar escondido", capitulo2), new Escolha("entrar junto", final1)};
+        raiz.escolhas = escolha01;
 
-        //executar o livro
-        System.out.println("esse registro esta no nome de:");
-        jogador.nome = sc.nextLine();
+        Escolha[] escolha02 = {new Escolha("atirar no meu suspeito", final3), new Escolha("atirar no novo suspeito", final2)};
+        capitulo2.escolhas = escolha02;
 
-        if (capitulo1.escolher() == 0){
-            suspeito1.atirar(jogador);
-            suspeito2.atirar(jogador);
-            final1.anunciar();
-        }
-        else {
-            if (capitulo2.escolher() == 0){
-                jogador.atirar(suspeito2);
-                suspeito1.atirar(suspeito2);
-                final2.anunciar();
-            }
-            else {
-                jogador.atirar(suspeito1);
-                suspeito2.atirar(suspeito1);
-                final3.anunciar();
-            }
-        }
+        //executando livro interativo
+        raiz.executar(raiz, sc);
         sc.close();
     }
 }
