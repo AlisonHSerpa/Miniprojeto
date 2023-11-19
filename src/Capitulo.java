@@ -13,19 +13,20 @@ public class Capitulo {
         this.texto = texto;
         this.penalidade = penalidade;
     }
+    
+    //metodos
+    public void executar(Scanner sc) {
+        mostrar();
 
-    public void executar(Capitulo capitulo, Scanner sc) {
-        mostrar(capitulo);
-
-        if (capitulo.escolhas != null){
-            executar(escolher(sc), sc);
+        if (this.escolhas != null){
+            escolher(sc).executar(sc);
         }
     }
 
-    public void mostrar (Capitulo capitulo){
-        capitulo.protag.agir(capitulo.penalidade);
-        System.out.println("------" +capitulo.nome+ "------");
-        System.out.println(capitulo.texto);
+    public void mostrar (){
+        this.protag.agir(this.penalidade);
+        System.out.println("------" +this.nome+ "------");
+        System.out.println(this.texto);
     }
 
     public Capitulo escolher (Scanner sc){

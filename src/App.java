@@ -54,7 +54,7 @@ public class App {
         capitulo2.escolhas = escolha02;
 
         //executando livro interativo
-        raiz.executar(raiz, sc);
+        raiz.executar(sc);
         sc.close();
     }
 }

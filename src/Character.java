@@ -13,7 +13,7 @@ public class Character {
 
         //metodos
         void agir(int penalidade){
-            sanidade += penalidade;
+            this.sanidade += penalidade;
 
             System.out.println("detetive " +this.nome+ " recebeu " +penalidade+ " de sanidade, agora restam " +this.sanidade);
         }
