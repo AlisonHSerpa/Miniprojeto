@@ -48,10 +48,10 @@ public class App {
 
         //atribuindo as escolhas
         Escolha[] escolha01 = {new Escolha("entrar escondido", capitulo2), new Escolha("entrar junto", final1)};
-        raiz.escolhas = escolha01;
+        raiz.setEscolhas(escolha01);
 
         Escolha[] escolha02 = {new Escolha("atirar no meu suspeito", final3), new Escolha("atirar no novo suspeito", final2)};
-        capitulo2.escolhas = escolha02;
+        capitulo2.setEscolhas(escolha02);
 
         //executando livro interativo
         raiz.executar(sc);

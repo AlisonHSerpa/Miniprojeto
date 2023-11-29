@@ -1,10 +1,10 @@
 import java.util.Scanner;
 public class Capitulo {
-    Character protag;
-    String nome;
-    String texto;
-    Escolha[] escolhas;
-    int penalidade;
+    private Character protag;
+    private String nome;
+    private String texto;
+    private Escolha[] escolhas;
+    private int penalidade;
 
     //construtor de capitulos
     Capitulo(Character protag, String nome, String texto, int penalidade) {
@@ -32,17 +32,21 @@ public class Capitulo {
     public Capitulo escolher (Scanner sc){
             while(true){
                 for(int i=0 ; i<this.escolhas.length ;i++){
-                System.out.println(this.escolhas[i].escolha);
+                System.out.println(this.escolhas[i].getEscolha());
                 }
                 String escolhafinal = sc.nextLine();
 
                 for (int i=0 ; i<this.escolhas.length ; i++){
-                    if (escolhafinal.equals(this.escolhas[i].escolha)){
-                        return this.escolhas[i].proximocapitulo;
+                    if (escolhafinal.equals(this.escolhas[i].getEscolha())){
+                        return this.escolhas[i].getProximoCapitulo();
                     }
                 }
                 System.out.println("voce digitou " +escolhafinal+ ", digite corretamente.");
 
                 }
+            }
+
+            public void setEscolhas(Escolha[] escolhas){
+                this.escolhas = escolhas;
             }
     }
