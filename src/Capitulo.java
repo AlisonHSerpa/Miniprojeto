@@ -41,7 +41,8 @@ public class Capitulo {
                         return this.escolhas[i].getProximoCapitulo();
                     }
                 }
-                System.out.println("voce digitou " +escolhafinal+ ", digite corretamente.");
+                System.out.println("voce digitou " +escolhafinal+ 
+                ", digite corretamente.");
 
                 }
             }

@@ -23,7 +23,7 @@ public class App {
 
         //final 1
         String end1 = "'Este foi o ultimo registro escrito no caderno do detetive "
-        +"falecido, que triste, estava tao confiante e morreu com 2 tiros no peito... "
+        + jogador.getName() +", que triste, estava tao confiante e morreu com 2 tiros no peito... "
         +"uma arma normal nao teria feito isso sozinha, pois tinham balas de calibres "
         +"diferentes, provavelmente havia outra pessoa nesse beco... mas quem?'.....fim..?";
         Capitulo final1 = new Capitulo(jogador, "erro de principiante", end1, -3);
@@ -47,10 +47,12 @@ public class App {
         Capitulo final3 = new Capitulo(jogador, "eu estava errado" ,end3, -2);
 
         //atribuindo as escolhas
-        Escolha[] escolha01 = {new Escolha("entrar escondido", capitulo2), new Escolha("entrar junto", final1)};
+        Escolha[] escolha01 = {new Escolha("entrar escondido", capitulo2), new Escolha
+        ("entrar junto", final1)};
         raiz.setEscolhas(escolha01);
 
-        Escolha[] escolha02 = {new Escolha("atirar no meu suspeito", final3), new Escolha("atirar no novo suspeito", final2)};
+        Escolha[] escolha02 = {new Escolha("atirar no meu suspeito", final3), new Escolha
+        ("atirar no novo suspeito", final2)};
         capitulo2.setEscolhas(escolha02);
 
         //executando livro interativo

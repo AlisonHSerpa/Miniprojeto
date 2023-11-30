@@ -14,6 +14,11 @@ public class Character {
         public void agir(int penalidade){
             this.sanidade += penalidade;
 
-            System.out.println("detetive " +this.nome+ " recebeu " +penalidade+ " de sanidade, agora restam " +this.sanidade);
+            System.out.println("detetive " +this.nome+ " recebeu " +penalidade+ 
+            " de sanidade, agora restam " +this.sanidade);
+        }
+
+        public String getName(){
+            return this.nome;
         }
     }
