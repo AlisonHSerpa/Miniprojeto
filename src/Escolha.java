@@ -1,17 +1,21 @@
-public class Escolha {
+public class Escolha
+{
     private String escolha;
     private Capitulo proximocapitulo;
     
-    Escolha (String escolha, Capitulo capitulo){
+    Escolha (String escolha, Capitulo capitulo)
+    {
         this.escolha = escolha;
         this.proximocapitulo = capitulo;
     }
 
-    public Capitulo getProximoCapitulo (){
+    public Capitulo getProximoCapitulo ()
+    {
         return this.proximocapitulo;
     }
 
-    public String getEscolha(){
+    public String getEscolha()
+    {
         return this.escolha;
     }
 }
