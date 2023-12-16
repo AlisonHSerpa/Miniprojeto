@@ -1,16 +1,18 @@
+import java.util.ArrayList;
 import java.util.Scanner;
-public class Capitulo 
+
+public class Capitulo
 {
-    private Character protag;
+    private Character personagem;
     private String nome;
     private String texto;
-    private Escolha[] escolhas;
+    private ArrayList<Escolha> escolhas = new ArrayList<Escolha>();
     private int penalidade;
 
     //construtor de capitulos
-    Capitulo(Character protag, String nome, String texto, int penalidade)
+    Capitulo(Character personagem, String nome, String texto, int penalidade)
     {
-        this.protag = protag;
+        this.personagem = personagem;
         this.nome = nome;
         this.texto = texto;
         this.penalidade = penalidade;
@@ -21,7 +23,7 @@ public class Capitulo
     {
         mostrar();
 
-        if (this.escolhas != null)
+        if (this.escolhas.size() != 0)
         {
             escolher(sc).executar(sc);
         }
@@ -29,7 +31,8 @@ public class Capitulo
 
     public void mostrar ()
     {
-        this.protag.agir(this.penalidade);
+        this.personagem.agir(this.penalidade);
+        this.personagem.morrer();
         System.out.println("------" +this.nome+ "------");
         System.out.println(this.texto);
     }
@@ -38,17 +41,17 @@ public class Capitulo
     {
             while(true)
             {
-                for(int i=0 ; i<this.escolhas.length ;i++)
+                for(int i=0 ; i<this.escolhas.size() ;i++)
                 {
-                System.out.println(this.escolhas[i].getEscolha());
+                System.out.println(this.escolhas.get(i).getEscolha());
                 }
                 String escolhafinal = sc.nextLine();
 
-                for (int i=0 ; i<this.escolhas.length ; i++)
+                for (int i=0 ; i<this.escolhas.size() ; i++)
                 {
-                    if (escolhafinal.equals(this.escolhas[i].getEscolha()))
+                    if (escolhafinal.equals(this.escolhas.get(i).getEscolha()))
                     {
-                        return this.escolhas[i].getProximoCapitulo();
+                        return this.escolhas.get(i).getProximoCapitulo();
                     }
                 }
                 System.out.println("voce digitou " +escolhafinal+
@@ -57,21 +60,8 @@ public class Capitulo
                 }
             }
 
-    public void setEscolhas(Escolha[] escolhas)
-    {
-        this.escolhas = escolhas;
-    }
-
     public void adicionarEscolha (Escolha a)
     {
-        Escolha[] novasEscolhas = new Escolha[this.escolhas.length +1];
-
-        for (int i=0 ; i < this.escolhas.length ; i++)
-        {
-            novasEscolhas[i] = this.escolhas[i];
-        }
-
-        novasEscolhas[this.escolhas.length] = a;
-        this.escolhas = novasEscolhas;
+        this.escolhas.add(a);
     }
 }

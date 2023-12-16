@@ -9,9 +9,10 @@ public class App
 
         Leitor leitor = new Leitor();
         HashMap<String,Character> personagens = leitor.lerPersonagens(
-        "C:\\Users\\aliso\\Desktop\\Faculdade\\Facul programas\\Miniprojeto\\src\\Personagens");
+        "resource\\Personagens");
         HashMap<String,Capitulo> capitulos = leitor.lerCapitulos(
-        "C:\\Users\\aliso\\Desktop\\Faculdade\\Facul programas\\Miniprojeto\\src\\Capitulos", personagens, sc);
+        "resource\\Capitulos",
+        personagens, sc);
 
         Capitulo raiz = capitulos.get("perseguir");
 

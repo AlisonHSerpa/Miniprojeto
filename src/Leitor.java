@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class Leitor 
+public class Leitor
 {
     public HashMap<String, Character> lerPersonagens (String indexPersonagens)
     {
@@ -14,7 +14,8 @@ public class Leitor
         {
             Scanner sc = new Scanner(SalvarPersonagens, "UTF-8");
 
-            String nomeCharacter = "";
+            String nomeCharacter;
+            int folegoCharacter;
             String linha = "";
 
             while (sc.hasNextLine())
@@ -24,7 +25,9 @@ public class Leitor
                     linha = sc.nextLine();
                 }
                 nomeCharacter = sc.nextLine();
-                personagens.put(nomeCharacter, new Character(nomeCharacter));
+                folegoCharacter = Integer.parseInt(sc.nextLine());
+                personagens.put(nomeCharacter, new Character(nomeCharacter, folegoCharacter));
+                linha = "";
             }
             sc.close();
         }
@@ -81,14 +84,9 @@ public class Leitor
         String TextoCapitulo;
         String CharacterNome;
         int folego;
-        String linha;
-        linha = sc.nextLine();
         CapituloNome = sc.nextLine();
-        linha = sc.nextLine();
         TextoCapitulo = sc.nextLine();
-        linha = sc.nextLine();
         CharacterNome = sc.nextLine();
-        linha = sc.nextLine();
         folego = Integer.parseInt(sc.nextLine());
 
         capitulos.put(CapituloNome, new Capitulo(personagens.get(CharacterNome),
@@ -101,12 +99,8 @@ public class Leitor
         String NomeCapitulo;
         String textoEscolha;
         String ProximoCapitulo;
-        String linha;
-        linha = sc.nextLine();
         NomeCapitulo = sc.nextLine();
-        linha = sc.nextLine();
         textoEscolha = sc.nextLine();
-        linha = sc.nextLine();
         ProximoCapitulo = sc.nextLine();
     
         Capitulo CapituloOrigem = capitulos.get(NomeCapitulo);

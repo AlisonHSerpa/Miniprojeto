@@ -1,19 +1,27 @@
 public class Character {
         //caracteristicas
         private String nome;
-        private int sanidade = 3;
+        private int folego;
 
         //construtores
-        Character(String nome){
+        Character(String nome, int folego){
             this.nome = nome;
+            this.folego = folego;
         }
 
         //metodos
         public void agir(int penalidade){
-            this.sanidade += penalidade;
+            this.folego -= penalidade;
 
-            System.out.println("detetive " +this.nome+ " recebeu " +penalidade+
-            " de sanidade, agora restam " +this.sanidade);
+            System.out.println(this.nome+ " perdeu " +penalidade+
+            " de folego, agora restam " +this.folego);
+        }
+
+        public void morrer(){
+            if (this.folego <= 0){
+                System.out.println(this.nome + " chegou a 0 de folego, "
+                +this.nome+ " colapsou e morreu." );
+            }
         }
 
         public String getName(){
